@@ -67,10 +67,10 @@ class _ImageAnimationState extends State<ImageAnimation>
   AnimationController? animationController;
 
   start() {
-    animationController = AnimationController(
-        duration: const Duration(milliseconds: 450), vsync: this);
-    animation = Tween(begin: 1.0, end: 0.0).animate(
-        CurvedAnimation(parent: animationController!, curve: Curves.easeIn));
+    animationController =
+        AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    animation = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
+        parent: animationController!, curve: Curves.easeInToLinear));
 
     animationController!.forward();
   }

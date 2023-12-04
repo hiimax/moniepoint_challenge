@@ -12,10 +12,10 @@ class MobileBottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return StatefulBuilder(builder: (context, setState) {
       return SizedBox(
-        height: (62),
+        height: (80),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: moniepointTransparent,
+          backgroundColor: moniepointWhite,
           selectedIconTheme: const IconThemeData(color: moniepointPrimaryColor),
           showSelectedLabels: true,
           selectedItemColor: moniepointPrimaryColor,
@@ -28,48 +28,48 @@ class MobileBottomNavigation extends StatelessWidget {
           ),
           currentIndex: currentIndex,
           onTap: onPressed,
-          items: [
+          items: const [
             BottomNavigationBarItem(
-              icon: Image.asset(
-                'home'.mobilepng,
+              icon: Icon(
+                Icons.home_outlined,
                 color: moniepointGrey,
               ),
               label: 'Home',
-              activeIcon: Image.asset(
-                'home'.mobilepng,
+              activeIcon: Icon(
+                Icons.home_outlined,
                 color: moniepointPrimaryColor,
               ),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(
-                'connect'.mobilepng,
+              icon: Icon(
+                Icons.calculate_outlined,
                 color: moniepointGrey,
               ),
-              label: 'Connect',
-              activeIcon: Image.asset(
-                'connect'.mobilepng,
+              label: 'Calculate',
+              activeIcon: Icon(
+                Icons.calculate_outlined,
                 color: moniepointPrimaryColor,
               ),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(
-                'chat'.mobilepng,
+              icon: Icon(
+                Icons.local_shipping,
                 color: moniepointGrey,
               ),
-              label: 'Chat',
-              activeIcon: Image.asset(
-                'chat'.mobilepng,
+              label: 'Shipment',
+              activeIcon: Icon(
+                Icons.local_shipping,
                 color: moniepointPrimaryColor,
               ),
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(
-                'profile'.mobilepng,
+              icon: Icon(
+                Icons.person,
                 color: moniepointGrey,
               ),
               label: 'Profile',
-              activeIcon: Image.asset(
-                'profile'.mobilepng,
+              activeIcon: Icon(
+                Icons.person,
                 color: moniepointPrimaryColor,
               ),
             ),
