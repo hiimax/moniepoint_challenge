@@ -12,7 +12,7 @@ class MobileBottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return StatefulBuilder(builder: (context, setState) {
       return SizedBox(
-        height: (80),
+        height: (100),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: moniepointWhite,

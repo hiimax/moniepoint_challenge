@@ -20,6 +20,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? errorBorderColor;
   final Color? focusedBorderColor;
   final double? height;
+  final double? borderRadius;
   final List<TextInputFormatter>? textInputFormatter;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -31,6 +32,7 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     this.validator,
+    this.borderRadius,
     this.autofocus,
     this.enabled,
     this.errorBorderColor,
@@ -82,18 +84,23 @@ class CustomTextFormField extends StatelessWidget {
         hintStyle: hintStyle ?? MoniePointTextStyle.subHeading,
         fillColor: fillColor ?? moniepointTransparent,
         filled: true,
+        disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: enabledBorderColor ?? const Color(0xffD9D9D9),
+            ),
+            borderRadius: BorderRadius.circular(borderRadius ?? 15)),
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: enabledBorderColor ?? const Color(0xffD9D9D9),
             ),
-            borderRadius: BorderRadius.circular(15)),
+            borderRadius: BorderRadius.circular(borderRadius ?? 15)),
         errorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: errorBorderColor ?? Colors.red),
-            borderRadius: BorderRadius.circular(15)),
+            borderRadius: BorderRadius.circular(borderRadius ?? 15)),
         focusedBorder: OutlineInputBorder(
             borderSide:
                 BorderSide(color: focusedBorderColor ?? moniepointPrimaryColor),
-            borderRadius: BorderRadius.circular(15)),
+            borderRadius: BorderRadius.circular(borderRadius ?? 15)),
         labelStyle: const TextStyle(
             color: moniepointPrimaryColor,
             fontSize: 16,
