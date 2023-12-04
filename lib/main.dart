@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: providers,
-      child: GetMaterialApp(
+      child: MaterialApp(
         builder: (BuildContext context, Widget? widget) {
           ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
             return CustomError(errorDetails: errorDetails);
