@@ -15,7 +15,7 @@ void main() {
     await tester.pumpWidget(const MaterialApp(home: SplashScreen()));
 
     // Verify that our counter starts at 0.
-    expect(find.byKey(Key('1')), findsOneWidget);
+    expect(find.byKey(const Key('1')), findsOneWidget);
     // expect(find.text('1'), findsNothing);
 
     // // Tap the '+' icon and trigger a frame.
