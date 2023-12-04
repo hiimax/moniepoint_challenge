@@ -8,7 +8,7 @@ const Color moniepointWhite = Colors.white;
 const Color moniepointGreen = Colors.green;
 
 /// light colors
-const Color moniepointPrimaryColor = Color(0xFF493391);
+const Color moniepointPrimaryColor = Color(0xFF0357ee);
 const Color moniepointSecondaryColor = Color(0xFFf2781e);
 const Color moniepointBackgroundColor = Color(0xFFf9f9f9);
 const Color moniepointTextColor = Color(0xff1E1E1E);
