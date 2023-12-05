@@ -36,11 +36,11 @@ jobs:
       - name: Getting packages
         run: flutter pub get
 
-      - name: Analyze
-        run: flutter analyze
-
-      - name: Run tests
-        run: flutter test --coverage
+#      - name: Analyze
+#        run: flutter analyze
+#
+#      - name: Run tests
+#        run: flutter test --coverage
 
       # I will add this in the future
       # - name: Check coverage

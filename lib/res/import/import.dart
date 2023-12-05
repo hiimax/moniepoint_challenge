@@ -7,6 +7,7 @@ export 'dart:ui' show ImageFilter;
 export 'package:flutter/foundation.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
+export 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 export 'package:hive/hive.dart';
 export 'package:moniepoint_challenge/res/theme/theme.dart';
 export 'package:moniepoint_challenge/view/screens/calculate/calculate.dart';

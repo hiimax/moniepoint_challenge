@@ -55,8 +55,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           SlideTransition(
             position: _voffsetAnimation,
             child: Container(
-              height: 200,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              height: 170,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               color: moniepointPrimaryColor,
               child: SafeArea(
                 child: Column(
@@ -345,13 +345,28 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: SizedBox(
               height: 180,
-              child: ListView.builder(
-                itemCount: 5,
-                clipBehavior: Clip.none,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  return const HorizontalCard();
-                },
+              child: AnimationLimiter(
+                child: ListView.builder(
+                  cacheExtent: 1000,
+                  itemCount: 5,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return AnimationConfiguration.staggeredList(
+                      position: index,
+                      duration: const Duration(milliseconds: 1000),
+                      child: const SlideAnimation(
+                        verticalOffset: 50.0,
+                        child: FadeInAnimation(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 0, vertical: 5),
+                            child: HorizontalCard(),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ),

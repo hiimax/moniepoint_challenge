@@ -1,13 +1,13 @@
 class ShipmentModel {
   String name;
-  String ID;
+  String id;
   String sendindLocation;
   String deliveryLocation;
 
   ShipmentModel({
     required this.name,
-    required this.ID,
+    required this.id,
     required this.sendindLocation,
     required this.deliveryLocation,
-  }); 
+  });
 }

@@ -1,3 +1,9 @@
+import 'package:moniepoint_challenge/view/screens/shipment/widget/cancelled.dart';
+import 'package:moniepoint_challenge/view/screens/shipment/widget/completed.dart';
+import 'package:moniepoint_challenge/view/screens/shipment/widget/in_progress.dart';
+import 'package:moniepoint_challenge/view/screens/shipment/widget/pending.dart';
+import 'package:moniepoint_challenge/view/screens/shipment/widget/widgets.dart';
+
 import '../../../res/import/import.dart';
 
 class ShipmentScreen extends StatefulWidget {
@@ -20,7 +26,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
   void initState() {
     _tabController = TabController(length: 5, vsync: this);
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 800),
       vsync: this,
     );
     _offsetAnimation = Tween<Offset>(
@@ -67,8 +73,8 @@ class _ShipmentScreenState extends State<ShipmentScreen>
       body: Column(
         children: [
           Container(
-            height: 160,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            height: 140,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             color: moniepointPrimaryColor,
             child: SafeArea(
               child: Column(
@@ -124,7 +130,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                         borderRadius:
                                             BorderRadius.circular(30)),
                                     child: const Text(
-                                      '10',
+                                      '12',
                                       style: TextStyle(
                                           color: moniepointWhite, fontSize: 12),
                                     ),
@@ -144,7 +150,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                         borderRadius:
                                             BorderRadius.circular(30)),
                                     child: const Text(
-                                      '10',
+                                      '6',
                                       style: TextStyle(
                                           color: moniepointWhite, fontSize: 12),
                                     ),
@@ -164,7 +170,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                         borderRadius:
                                             BorderRadius.circular(30)),
                                     child: const Text(
-                                      '10',
+                                      '8',
                                       style: TextStyle(
                                           color: moniepointWhite, fontSize: 12),
                                     ),
@@ -184,7 +190,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                         borderRadius:
                                             BorderRadius.circular(30)),
                                     child: const Text(
-                                      '10',
+                                      '4',
                                       style: TextStyle(
                                           color: moniepointWhite, fontSize: 12),
                                     ),
@@ -204,7 +210,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                         borderRadius:
                                             BorderRadius.circular(30)),
                                     child: const Text(
-                                      '10',
+                                      '5',
                                       style: TextStyle(
                                           color: moniepointWhite, fontSize: 12),
                                     ),
@@ -224,42 +230,61 @@ class _ShipmentScreenState extends State<ShipmentScreen>
           ),
           SlideTransition(
             position: _offsetAnimation,
-            child: Column(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  Text(
+                    'Shipments',
+                    // key: HomeScreenKeys.trackingText,
+                    style: MoniePointTextStyle.heading2.copyWith(
+                      color: moniepointPrimaryColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const YMargin(5),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Shipments',
-                        // key: HomeScreenKeys.trackingText,
-                        style: MoniePointTextStyle.heading2.copyWith(
-                          color: moniepointPrimaryColor,
-                          fontWeight: FontWeight.w600,
+                AnimationLimiter(
+                  child: ListView.builder(
+                    cacheExtent: 1000,
+                    itemCount: 12,
+                    itemBuilder: (BuildContext context, int index) {
+                      return AnimationConfiguration.staggeredList(
+                        position: index,
+                        duration: const Duration(milliseconds: 1000),
+                        child: SlideAnimation(
+                          verticalOffset: 50.0,
+                          child: FadeInAnimation(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0, vertical: 5),
+                              child: ShipmentWidget(
+                                status: index % 2 == 0
+                                    ? ShipmentStatus.inProgress
+                                    : index % 3 == 0
+                                        ? ShipmentStatus.completed
+                                        : index % 4 == 0
+                                            ? ShipmentStatus.pending
+                                            : ShipmentStatus.loading,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
-                const YMargin(20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Container(
-                    // key: HomeScreenKeys.trackingContainer,
-                    decoration: BoxDecoration(
-                        color: moniepointWhite,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: const Offset(0, 3),
-                            color: moniepointBlack.withOpacity(0.1),
-                            blurRadius: 10,
-                            spreadRadius: 0,
-                          )
-                        ]),
-                  ),
-                ),
-                const YMargin(20),
+                const Completed(),
+                const InProgress(),
+                const Pending(),
+                const Cancelled()
               ],
             ),
           ),

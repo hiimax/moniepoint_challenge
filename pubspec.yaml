@@ -19,6 +19,7 @@ dependencies:
   # local DB
   hive: ^2.2.3
   intl: ^0.18.1
+  flutter_staggered_animations: ^1.1.1
  
 
 

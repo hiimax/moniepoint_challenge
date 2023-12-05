@@ -54,8 +54,8 @@ class _SearchScreenState extends State<SearchScreen>
       body: Column(
         children: [
           Container(
-            height: 160,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            height: 120,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
             color: moniepointPrimaryColor,
             child: SafeArea(
               child: Column(
