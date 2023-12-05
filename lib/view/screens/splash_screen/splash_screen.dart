@@ -13,7 +13,6 @@ class _SplashScreenState extends State<SplashScreen> {
   Timer? timer;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     timer = Timer(const Duration(seconds: 5), () async {
       Navigator.pushReplacementNamed(context, RouteNames.mainScreen);
@@ -22,7 +21,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     timer!.cancel();
     super.dispose();
   }
