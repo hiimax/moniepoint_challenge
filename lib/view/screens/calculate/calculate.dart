@@ -1,3 +1,9 @@
+// ignore_for_file: unused_field
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:moniepoint_challenge/data/provider/test_provider.dart';
+import 'package:moniepoint_challenge/view/screens/calculate/widget/widget.dart';
+
 import '../../../res/import/import.dart';
 
 class CalculateScreen extends StatefulWidget {
@@ -64,19 +70,19 @@ class _CalculateScreenState extends State<CalculateScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: 140,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            color: moniepointPrimaryColor,
-            child: SafeArea(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Flexible(
-                        child: SlideTransition(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              // height: 140,
+              padding: REdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              color: moniepointPrimaryColor,
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        SlideTransition(
                           position: _offsetAnimation,
                           child: InkWell(
                             onTap: () => Navigator.pop(context),
@@ -86,232 +92,305 @@ class _CalculateScreenState extends State<CalculateScreen>
                             ),
                           ),
                         ),
-                      ),
-                      const Spacer(),
-                      SlideTransition(
-                        position: _yOffsetAnimation,
-                        child: SlideTransition(
-                          position: _appBarTitlesetAnimation,
-                          child: Text('Calculate',
-                              style: MoniePointTextStyle.heading2.copyWith(
-                                color: moniepointWhite,
-                              )),
+                        const Spacer(),
+                        SlideTransition(
+                          position: _yOffsetAnimation,
+                          child: SlideTransition(
+                            position: _appBarTitlesetAnimation,
+                            child: Text('Calculate',
+                                style: MoniePointTextStyle.heading2.copyWith(
+                                  color: moniepointWhite,
+                                )),
+                          ),
                         ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const YMargin(
-            30,
-          ),
-          SlideTransition(
-            position: _offsetAnimation,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: [
-                  Text(
-                    'Destination',
-                    // key: HomeScreenKeys.trackingText,
-                    style: MoniePointTextStyle.heading2.copyWith(
-                      color: moniepointPrimaryColor,
-                      fontWeight: FontWeight.w600,
+                        const Spacer(),
+                        const Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.transparent,
+                        )
+                      ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          const YMargin(5),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: moniepointWhite,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(0, 3),
-                      color: moniepointBlack.withOpacity(0.1),
-                      blurRadius: 10,
-                      spreadRadius: 0,
-                    )
-                  ]),
+            const YMargin(
+              30,
+            ),
+            SlideTransition(
+              position: _offsetAnimation,
               child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
+                padding: REdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
                   children: [
-                    CustomTextFormField(
-                      hintText: 'Send location',
-                      // key: HomeScreenKeys.trackingNumber,
-                      // controller: _trackingNumberController,
-                      fillColor: moniepointGrey.withOpacity(0.2),
-                      focusedBorderColor: moniepointGrey.withOpacity(0.5),
-                      enabledBorderColor: moniepointGrey.withOpacity(0.5),
-                      textStyle: MoniePointTextStyle.subHeading.copyWith(
-                        color: moniepointBlack,
-                      ),
-                      borderRadius: 10,
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.only(left: 15.0),
-                        child: SizedBox(
-                          width: 50,
-                          child: Row(
-                            children: [
-                              const Icon(Icons.unarchive_outlined,
-                                  color: moniepointGrey),
-                              const Icon(Icons.more_vert,
-                                  color: moniepointGrey),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    const YMargin(10),
-                    CustomTextFormField(
-                      hintText: 'Receiver location',
-                      // key: HomeScreenKeys.trackingNumber,
-                      // controller: _trackingNumberController,
-                      fillColor: moniepointGrey.withOpacity(0.2),
-                      focusedBorderColor: moniepointGrey.withOpacity(0.5),
-                      enabledBorderColor: moniepointGrey.withOpacity(0.5),
-                      textStyle: MoniePointTextStyle.subHeading.copyWith(
-                        color: moniepointBlack,
-                      ),
-                      borderRadius: 10,
-                      prefixIcon: const Padding(
-                        padding: EdgeInsets.only(left: 15.0),
-                        child: SizedBox(
-                          width: 50,
-                          child: Row(
-                            children: [
-                              Icon(Icons.archive_outlined,
-                                  color: moniepointGrey),
-                              Icon(Icons.more_vert, color: moniepointGrey),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    const YMargin(10),
-                    CustomTextFormField(
-                      hintText: 'Approx weight',
-                      // key: HomeScreenKeys.trackingNumber,
-                      // controller: _trackingNumberController,
-                      fillColor: moniepointGrey.withOpacity(0.2),
-                      focusedBorderColor: moniepointGrey.withOpacity(0.5),
-                      enabledBorderColor: moniepointGrey.withOpacity(0.5),
-                      textStyle: MoniePointTextStyle.subHeading.copyWith(
-                        color: moniepointBlack,
-                      ),
-                      borderRadius: 10,
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.only(left: 15.0),
-                        child: SizedBox(
-                          width: 50,
-                          child: Row(
-                            children: [
-                              const Icon(Icons.hourglass_empty_outlined,
-                                  color: moniepointGrey),
-                              const Icon(Icons.more_vert,
-                                  color: moniepointGrey),
-                            ],
-                          ),
-                        ),
+                    Text(
+                      'Destination',
+                      // key: HomeScreenKeys.trackingText,
+                      style: MoniePointTextStyle.heading2.copyWith(
+                        color: moniepointPrimaryColor,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-          ),
-          const YMargin(
-            30,
-          ),
-          SlideTransition(
-            position: _offsetAnimation,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            const YMargin(5),
+            Padding(
+              padding: REdgeInsets.symmetric(horizontal: 16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: moniepointWhite,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        offset: const Offset(0, 3),
+                        color: moniepointBlack.withOpacity(0.1),
+                        blurRadius: 10,
+                        spreadRadius: 0,
+                      )
+                    ]),
+                child: Padding(
+                  padding: REdgeInsets.all(15.0),
+                  child: Column(
                     children: [
-                      Text(
-                        'Packaging',
-                        // key: HomeScreenKeys.trackingText,
-                        style: MoniePointTextStyle.heading2.copyWith(
-                          color: moniepointPrimaryColor,
-                          fontWeight: FontWeight.w600,
+                      CustomTextFormField(
+                        hintText: 'Send location',
+                        // key: HomeScreenKeys.trackingNumber,
+                        // controller: _trackingNumberController,
+                        fillColor: moniepointGrey.withOpacity(0.2),
+                        focusedBorderColor: moniepointGrey.withOpacity(0.5),
+                        enabledBorderColor: moniepointGrey.withOpacity(0.5),
+                        textStyle: MoniePointTextStyle.subHeading.copyWith(
+                          color: moniepointBlack,
+                        ),
+                        borderRadius: 10,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: SizedBox(
+                            width: 50.w,
+                            child: const Row(
+                              children: [
+                                Icon(Icons.unarchive_outlined,
+                                    color: moniepointGrey),
+                                Icon(Icons.more_vert, color: moniepointGrey),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                      Text(
-                        'What are you sending?',
-                        // key: HomeScreenKeys.trackingText,
-                        style: MoniePointTextStyle.subHeading.copyWith(
+                      const YMargin(10),
+                      CustomTextFormField(
+                        hintText: 'Receiver location',
+                        // key: HomeScreenKeys.trackingNumber,
+                        // controller: _trackingNumberController,
+                        fillColor: moniepointGrey.withOpacity(0.2),
+                        focusedBorderColor: moniepointGrey.withOpacity(0.5),
+                        enabledBorderColor: moniepointGrey.withOpacity(0.5),
+                        textStyle: MoniePointTextStyle.subHeading.copyWith(
+                          color: moniepointBlack,
+                        ),
+                        borderRadius: 10,
+                        prefixIcon: Padding(
+                          padding: REdgeInsets.only(left: 15.0),
+                          child: SizedBox(
+                            width: 50.w,
+                            child: const Row(
+                              children: [
+                                Icon(Icons.archive_outlined,
+                                    color: moniepointGrey),
+                                Icon(Icons.more_vert, color: moniepointGrey),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const YMargin(10),
+                      CustomTextFormField(
+                        hintText: 'Approx weight',
+                        // key: HomeScreenKeys.trackingNumber,
+                        // controller: _trackingNumberController,
+                        fillColor: moniepointGrey.withOpacity(0.2),
+                        focusedBorderColor: moniepointGrey.withOpacity(0.5),
+                        enabledBorderColor: moniepointGrey.withOpacity(0.5),
+                        textStyle: MoniePointTextStyle.subHeading.copyWith(
+                          color: moniepointBlack,
+                        ),
+                        borderRadius: 10,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: SizedBox(
+                            width: 50.w.w,
+                            child: const Row(
+                              children: [
+                                Icon(Icons.hourglass_empty_outlined,
+                                    color: moniepointGrey),
+                                Icon(Icons.more_vert, color: moniepointGrey),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const YMargin(
+              30,
+            ),
+            SlideTransition(
+              position: _offsetAnimation,
+              child: Padding(
+                padding: REdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Packaging',
+                          // key: HomeScreenKeys.trackingText,
+                          style: MoniePointTextStyle.heading2.copyWith(
+                            color: moniepointPrimaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          'What are you sending?',
+                          // key: HomeScreenKeys.trackingText,
+                          style: MoniePointTextStyle.subHeading.copyWith(
+                            color: moniepointGrey,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const YMargin(5),
+            Padding(
+              padding: REdgeInsets.symmetric(horizontal: 16.0),
+              child: CustomTextFormField(
+                hintText: 'Box',
+                // key: HomeScreenKeys.trackingNumber,
+                // controller: _trackingNumberController,
+                fillColor: moniepointWhite,
+                focusedBorderColor: moniepointWhite,
+                enabledBorderColor: moniepointWhite,
+                textStyle: MoniePointTextStyle.subHeading.copyWith(
+                  color: moniepointBlack,
+                ),
+                borderRadius: 10,
+                prefixIcon: Padding(
+                  padding: REdgeInsets.only(left: 15.0),
+                  child: SizedBox(
+                    width: 50.w,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                            width: 30.w,
+                            height: 30.h,
+                            child: Image.asset(
+                              'cardboard_box'.mobilepng,
+                              fit: BoxFit.contain,
+                            )),
+                        const Icon(Icons.more_vert, color: moniepointGrey),
+                      ],
+                    ),
+                  ),
+                ),
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: SizedBox(
+                    width: 50.w,
+                    child: const Row(
+                      children: [
+                        Icon(
+                          Icons.keyboard_arrow_down_outlined,
                           color: moniepointGrey,
-                          fontWeight: FontWeight.w400,
+                          size: 25,
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ],
+                ),
               ),
             ),
-          ),
-          const YMargin(5),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: CustomTextFormField(
-              hintText: 'Box',
-              // key: HomeScreenKeys.trackingNumber,
-              // controller: _trackingNumberController,
-              fillColor: moniepointWhite,
-              focusedBorderColor: moniepointWhite,
-              enabledBorderColor: moniepointWhite,
-              textStyle: MoniePointTextStyle.subHeading.copyWith(
-                color: moniepointBlack,
+            const YMargin(30),
+            SlideTransition(
+              position: _offsetAnimation,
+              child: Padding(
+                padding: REdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Categories',
+                          // key: HomeScreenKeys.trackingText,
+                          style: MoniePointTextStyle.heading2.copyWith(
+                            color: moniepointPrimaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          'What are you sending?',
+                          // key: HomeScreenKeys.trackingText,
+                          style: MoniePointTextStyle.subHeading.copyWith(
+                            color: moniepointGrey,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              borderRadius: 10,
-              prefixIcon: Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: SizedBox(
-                  width: 50,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                          width: 30,
-                          height: 30,
-                          child: Image.asset(
-                            'cardboard_box'.mobilepng,
-                            fit: BoxFit.contain,
+            ),
+            const YMargin(20),
+            SlideTransition(
+              position: _offsetAnimation,
+              child: Consumer<TestProvider>(
+                builder: (context, test, _) {
+                  return Wrap(
+                    spacing: 10,
+                    children: List.generate(
+                      test.categoryList.length,
+                      (index) => InkWell(
+                          onTap: () {
+                            test.selectCategory(
+                              index: index,
+                            );
+                          },
+                          child: ChipWidget(
+                            label: test.categoryList[index].label,
+                            index: index,
                           )),
-                      Icon(Icons.more_vert, color: moniepointGrey),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },
               ),
-              suffixIcon: Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child: SizedBox(
-                  width: 50,
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.keyboard_arrow_down_outlined,
-                        color: moniepointGrey,
-                        size: 25,
-                      ),
-                    ],
-                  ),
+            ),
+            const YMargin(10),
+            SlideTransition(
+              position: _offsetAnimation,
+              child: Padding(
+                padding: REdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+                child: CustomButton(
+                  title: 'Calculate',
+                  buttonColor: moniepointSecondaryColor,
+                  onPressed: () {
+                    Navigator.pushNamed(context, RouteNames.successScreen);
+                  },
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

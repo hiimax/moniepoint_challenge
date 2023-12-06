@@ -16,6 +16,7 @@ export 'package:moniepoint_challenge/view/screens/home/home.dart';
 export 'package:moniepoint_challenge/view/screens/profile/profile.dart';
 export 'package:moniepoint_challenge/view/screens/shipment/shipment.dart';
 export 'package:provider/provider.dart';
+export 'package:moniepoint_challenge/view/screens/success/success.dart';
 
 export '../../../res/constant/responsiveness.dart';
 export '../../../res/spacer/spacer.dart';

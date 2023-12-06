@@ -8,7 +8,7 @@ class InProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimationLimiter(
-      child: ListView.builder(
+      child: ListView.builder(padding: EdgeInsets.zero,
         itemCount: 8,
         cacheExtent: 1000,
         itemBuilder: (BuildContext context, int index) {

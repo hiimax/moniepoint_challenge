@@ -9,6 +9,7 @@ class Cancelled extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimationLimiter(
       child: ListView.builder(
+        padding: EdgeInsets.zero,
         cacheExtent: 1000,
         itemCount: 5,
         itemBuilder: (BuildContext context, int index) {

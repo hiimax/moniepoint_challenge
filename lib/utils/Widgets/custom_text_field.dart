@@ -159,7 +159,7 @@ class CustomTextFormFieldDropDown extends StatelessWidget {
         onChanged: onchanged,
         onSaved: onsaved,
         onTap: onTap,
-        icon: icon ?? Icon(Icons.arrow_drop_down, size: 30),
+        icon: icon ?? const Icon(Icons.arrow_drop_down, size: 30),
         style: textStyle ??
             const TextStyle(
                 fontFamily: "Helvetica Neue",
