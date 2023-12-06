@@ -1,6 +1,7 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moniepoint_challenge/data/provider/test_provider.dart';
-import 'package:moniepoint_challenge/view/screens/home/widget/widget.dart';
 import 'package:moniepoint_challenge/view/screens/search_screen/search_screen_keys.dart';
+import 'package:moniepoint_challenge/view/screens/search_screen/widget/widget.dart';
 
 import '../../../res/import/import.dart';
 
@@ -54,8 +55,7 @@ class _SearchScreenState extends State<SearchScreen>
       body: Column(
         children: [
           Container(
-            height: 120,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+            padding: REdgeInsets.fromLTRB(16, 16, 16, 16),
             color: moniepointPrimaryColor,
             child: SafeArea(
               child: Column(
@@ -66,6 +66,7 @@ class _SearchScreenState extends State<SearchScreen>
                         child: SlideTransition(
                           position: _offsetAnimation,
                           child: InkWell(
+                            key: SearchScreenScreenKeys.backButton  ,
                             onTap: () => Navigator.pop(context),
                             child: const Icon(
                               Icons.arrow_back_ios,
@@ -118,8 +119,9 @@ class _SearchScreenState extends State<SearchScreen>
                                   ),
                                 ),
                               ),
+                              
                               onchanged: (val) {
-                                test.searchThroughList(val!);
+                                test.searchThroughList(val ??'#Ne');
                               },
                             ),
                           ),
@@ -139,119 +141,55 @@ class _SearchScreenState extends State<SearchScreen>
           const YMargin(
             30,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Consumer<TestProvider>(
-              builder: (context, test, _) {
-                return SlideTransition(
-                  position: _voffsetAnimation,
-                  child: Container(
-                    key: SearchScreenScreenKeys.shippingList,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: moniepointWhite,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: const Offset(0, 3),
-                          color: moniepointBlack.withOpacity(0.1),
-                          blurRadius: 10,
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: ListView.builder(
-                      itemCount: test.searchList.length,
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      physics: const ClampingScrollPhysics(),
-                      itemBuilder: (BuildContext context, int index) {
-                        var value = test.searchList[index];
-                        return Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  const IconWithBackgroundColor(
-                                    backgroundColor: moniepointPrimaryColor,
-                                    child: Icon(
-                                      Icons.local_shipping,
-                                      color: moniepointWhite,
-                                      size: 20,
-                                    ),
-                                  ),
-                                  const XMargin(5),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        value.name,
-                                        style: MoniePointTextStyle.heading3
-                                            .copyWith(
-                                          color: moniepointTextColor,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            value.ID,
-                                            style: MoniePointTextStyle
-                                                .subHeading
-                                                .copyWith(
-                                              color: moniepointGrey,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                          const XMargin(5),
-                                          const Icon(
-                                            Icons.circle,
-                                            color: moniepointGrey,
-                                            size: 10,
-                                          ),
-                                          const XMargin(5),
-                                          Text(
-                                            value.sendindLocation,
-                                            style: MoniePointTextStyle
-                                                .subHeading
-                                                .copyWith(
-                                              color: moniepointGrey,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                          const XMargin(5),
-                                          const Icon(
-                                            Icons.arrow_forward_ios,
-                                            color: moniepointGrey,
-                                            size: 10,
-                                          ),
-                                          const XMargin(5),
-                                          Text(
-                                            value.deliveryLocation,
-                                            style: MoniePointTextStyle
-                                                .subHeading
-                                                .copyWith(
-                                              color: moniepointGrey,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const Divider()
-                            ],
+          Flexible(
+            child: Padding(
+              padding: REdgeInsets.symmetric(horizontal: 16.0),
+              child: Consumer<TestProvider>(
+                builder: (context, test, _) {
+                  return SlideTransition(
+                    position: _voffsetAnimation,
+                    child: Container(
+                      key: SearchScreenScreenKeys.shippingList,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: moniepointWhite,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: const Offset(0, 3),
+                            color: moniepointBlack.withOpacity(0.1),
+                            blurRadius: 10,
+                            spreadRadius: 0,
+                          )
+                        ],
+                      ),
+                      child: AnimationLimiter(
+                        child: ListView.separated(
+                          itemCount: test.searchList.length,
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          physics: const ClampingScrollPhysics(),
+                          separatorBuilder: (context, index) => Padding(
+                            padding: REdgeInsets.symmetric(horizontal: 10),
+                            child: const Divider(),
                           ),
-                        );
-                      },
+                          itemBuilder: (BuildContext context, int index) {
+                            var value = test.searchList[index];
+                            return AnimationConfiguration.staggeredList(
+                                position: index,
+                                duration: const Duration(milliseconds: 1000),
+                                child: SlideAnimation(
+                                    verticalOffset: 50.0,
+                                    child: FadeInAnimation(
+                                        child: SearchItem(value: value))));
+                          },
+                        ),
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ],

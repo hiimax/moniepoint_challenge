@@ -8,7 +8,7 @@ class Pending extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimationLimiter(
-      child: ListView.builder(
+      child: ListView.builder(padding: EdgeInsets.zero,
         cacheExtent: 1000,
         itemCount: 4,
         itemBuilder: (BuildContext context, int index) {

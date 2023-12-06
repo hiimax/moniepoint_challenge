@@ -1,3 +1,5 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../res/import/import.dart';
 
 class MobileBottomNavigation extends StatelessWidget {
@@ -12,7 +14,7 @@ class MobileBottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return StatefulBuilder(builder: (context, setState) {
       return SizedBox(
-        height: (100),
+        height: (95).sp,
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: moniepointWhite,

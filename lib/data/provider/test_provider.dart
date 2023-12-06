@@ -1,3 +1,4 @@
+import 'package:moniepoint_challenge/data/model/category_model.dart';
 import 'package:moniepoint_challenge/data/model/shipment_model.dart';
 
 import '../../res/import/import.dart';
@@ -94,6 +95,45 @@ class TestProvider extends ChangeNotifier {
               element.id.toLowerCase().contains(value.toLowerCase()))
           .toList();
     }
+    notifyListeners();
+  }
+
+  final List<CategoryModel> _categoryList = [
+    CategoryModel(
+      label: 'Documents',
+      isSelected: false,
+    ),
+    CategoryModel(
+      label: 'Glass',
+      isSelected: false,
+    ),
+    CategoryModel(
+      label: 'Liquid',
+      isSelected: false,
+    ),
+    CategoryModel(
+      label: 'Food',
+      isSelected: false,
+    ),
+    CategoryModel(
+      label: 'Electronics',
+      isSelected: false,
+    ),
+    CategoryModel(
+      label: 'Products',
+      isSelected: false,
+    ),
+    CategoryModel(
+      label: 'Others',
+      isSelected: false,
+    ),
+  ];
+
+  List<CategoryModel> get categoryList => _categoryList;
+
+  void selectCategory({required int index}) {
+    _categoryList[index].isSelected =
+        _categoryList[index].isSelected ? false : true;
     notifyListeners();
   }
 }

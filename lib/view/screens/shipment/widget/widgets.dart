@@ -1,3 +1,5 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../res/import/import.dart';
 
 class ShipmentWidget extends StatelessWidget {
@@ -13,7 +15,7 @@ class ShipmentWidget extends StatelessWidget {
         // key: HomeScreenKeys.trackingContainer,
         decoration: BoxDecoration(
             color: moniepointWhite,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(15.r),
             boxShadow: [
               BoxShadow(
                 offset: const Offset(0, 3),
@@ -23,13 +25,13 @@ class ShipmentWidget extends StatelessWidget {
               )
             ]),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 15),
+          padding: REdgeInsets.symmetric(horizontal: 16.0, vertical: 15),
           child: Column(
             children: [
               Row(
                 children: [
                   Container(
-                    width: 130,
+                    width: 130.w,
                     decoration: BoxDecoration(
                         color: moniepointGrey.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(15),
@@ -42,7 +44,7 @@ class ShipmentWidget extends StatelessWidget {
                           )
                         ]),
                     child: Padding(
-                      padding: const EdgeInsets.all(2),
+                      padding: REdgeInsets.all(2),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -84,7 +86,7 @@ class ShipmentWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              YMargin(10),
+              const YMargin(10),
               Row(
                 children: [
                   Column(
@@ -93,39 +95,39 @@ class ShipmentWidget extends StatelessWidget {
                       Text(
                         'Arrive today!',
                         style: MoniePointTextStyle.heading1.copyWith(
-                            fontSize: 20,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w600,
                             color: moniepointBlack),
                       ),
-                      YMargin(5),
+                      const YMargin(5),
                       Text(
                         'Your delivery,#NE3432792T9902 \n fromAtlanta, is arriving today',
                         style: MoniePointTextStyle.subHeading.copyWith(
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w400,
                             color: moniepointGrey),
                       ),
-                      YMargin(5),
+                      const YMargin(5),
                       Row(
                         children: [
                           Text(
                             '\$6500 USD',
                             style: MoniePointTextStyle.subHeading.copyWith(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: moniepointPrimaryColor),
                           ),
-                          XMargin(5),
+                          const XMargin(5),
                           Icon(
                             Icons.circle,
-                            size: 12,
+                            size: 12.sp,
                             color: moniepointGrey,
                           ),
-                          XMargin(5),
+                          const XMargin(5),
                           Text(
                             'Sep 20,2023',
                             style: MoniePointTextStyle.subHeading.copyWith(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
                                 color: moniepointPrimaryColor),
                           ),
@@ -133,10 +135,10 @@ class ShipmentWidget extends StatelessWidget {
                       )
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   SizedBox(
-                      width: 80,
-                      height: 80,
+                      width: 80.w,
+                      height: 80.h,
                       child: Image.asset(
                         'cardboard_box'.mobilepng,
                         fit: BoxFit.contain,

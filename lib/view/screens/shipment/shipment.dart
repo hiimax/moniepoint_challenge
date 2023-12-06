@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moniepoint_challenge/view/screens/shipment/widget/cancelled.dart';
 import 'package:moniepoint_challenge/view/screens/shipment/widget/completed.dart';
 import 'package:moniepoint_challenge/view/screens/shipment/widget/in_progress.dart';
@@ -21,7 +22,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
   late final Animation<Offset> _offsetAnimation;
   late final Animation<Offset> _appBarTitlesetAnimation;
   late final Animation<Offset> _yOffsetAnimation;
-  late final Animation<Offset> _voffsetAnimation;
+  // late final Animation<Offset> _voffsetAnimation;
   @override
   void initState() {
     _tabController = TabController(length: 5, vsync: this);
@@ -50,13 +51,13 @@ class _ShipmentScreenState extends State<ShipmentScreen>
       parent: _controller,
       curve: Curves.easeInOut,
     ));
-    _voffsetAnimation = Tween<Offset>(
-      begin: const Offset(0.0, 0.2),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
+    // _voffsetAnimation = Tween<Offset>(
+    //   begin: const Offset(0.0, 0.2),
+    //   end: const Offset(0.0, 0.0),
+    // ).animate(CurvedAnimation(
+    //   parent: _controller,
+    //   curve: Curves.easeInOut,
+    // ));
     _controller.forward();
     super.initState();
   }
@@ -73,8 +74,8 @@ class _ShipmentScreenState extends State<ShipmentScreen>
       body: Column(
         children: [
           Container(
-            height: 140,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            // height: 140,
+            padding: REdgeInsets.fromLTRB(16, 10, 16, 0),
             color: moniepointPrimaryColor,
             child: SafeArea(
               child: Column(
@@ -84,12 +85,9 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                       Flexible(
                         child: SlideTransition(
                           position: _offsetAnimation,
-                          child: InkWell(
-                            onTap: () => Navigator.pop(context),
-                            child: const Icon(
-                              Icons.arrow_back_ios,
-                              color: moniepointWhite,
-                            ),
+                          child: const Icon(
+                            Icons.arrow_back_ios,
+                            color: moniepointWhite,
                           ),
                         ),
                       ),
@@ -103,7 +101,8 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                 color: moniepointWhite,
                               )),
                         ),
-                      )
+                      ),
+                      const Spacer(),
                     ],
                   ),
                   const YMargin(20),
@@ -123,8 +122,8 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                     'All',
                                   ),
                                   Container(
-                                    margin: const EdgeInsets.only(left: 8),
-                                    padding: const EdgeInsets.all(4),
+                                    margin: REdgeInsets.only(left: 8),
+                                    padding: REdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                         color: moniepointSecondaryColor,
                                         borderRadius:
@@ -143,8 +142,8 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                 children: [
                                   const Text('Completed'),
                                   Container(
-                                    margin: const EdgeInsets.only(left: 8),
-                                    padding: const EdgeInsets.all(4),
+                                    margin: REdgeInsets.only(left: 8),
+                                    padding: REdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                         color: moniepointSecondaryColor,
                                         borderRadius:
@@ -163,8 +162,8 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                 children: [
                                   const Text('In progress'),
                                   Container(
-                                    margin: const EdgeInsets.only(left: 8),
-                                    padding: const EdgeInsets.all(4),
+                                    margin: REdgeInsets.only(left: 8),
+                                    padding: REdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                         color: moniepointSecondaryColor,
                                         borderRadius:
@@ -183,8 +182,8 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                 children: [
                                   const Text('Pending'),
                                   Container(
-                                    margin: const EdgeInsets.only(left: 8),
-                                    padding: const EdgeInsets.all(4),
+                                    margin: REdgeInsets.only(left: 8),
+                                    padding: REdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                         color: moniepointSecondaryColor,
                                         borderRadius:
@@ -203,8 +202,8 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                                 children: [
                                   const Text('Cancelled'),
                                   Container(
-                                    margin: const EdgeInsets.only(left: 8),
-                                    padding: const EdgeInsets.all(4),
+                                    margin: REdgeInsets.only(left: 8),
+                                    padding: REdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                         color: moniepointSecondaryColor,
                                         borderRadius:
@@ -231,7 +230,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
           SlideTransition(
             position: _offsetAnimation,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: REdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
                 children: [
                   Text(
@@ -248,11 +247,12 @@ class _ShipmentScreenState extends State<ShipmentScreen>
           ),
           const YMargin(5),
           Expanded(
-            child: TabBarView(
+             child: TabBarView(
               controller: _tabController,
               children: [
                 AnimationLimiter(
                   child: ListView.builder(
+                    padding: EdgeInsets.zero,
                     cacheExtent: 1000,
                     itemCount: 12,
                     itemBuilder: (BuildContext context, int index) {
@@ -263,7 +263,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                           verticalOffset: 50.0,
                           child: FadeInAnimation(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
+                              padding: REdgeInsets.symmetric(
                                   horizontal: 16.0, vertical: 5),
                               child: ShipmentWidget(
                                 status: index % 2 == 0
