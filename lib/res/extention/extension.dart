@@ -5,6 +5,7 @@ extension StringExtension on String {
   String get mobilesvg => 'assets/images/mobile/svgs/$this.svg';
 
   String get mobilepng => 'assets/images/mobile/$this.png';
+  String get mobilejpg => 'assets/images/mobile/$this.jpg';
 
   String get mobilegif => 'assets/images/mobile/$this.gif';
 

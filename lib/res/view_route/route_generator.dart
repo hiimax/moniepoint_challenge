@@ -3,8 +3,12 @@ import '../import/import.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case RouteNames.signup:
-      //   return CustomSlideTransition(child: const SignInScreen());
+      case RouteNames.mainScreen:
+        return CustomSlideTransition(child: const MainScreen());
+      case RouteNames.searchScreen:
+        return CustomSlideTransition(child: const SearchScreen());
+        case RouteNames.successScreen:
+        return CustomSlideTransition(child: const SuccessScreen());
       default:
         return _errorRoute();
     }

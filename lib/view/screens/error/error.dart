@@ -18,7 +18,7 @@ class CustomError extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              'dummy'.mobilepng,
+              '404.png'.mobilepng,
               scale: 1.5,
             ),
             const YMargin(12),

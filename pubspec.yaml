@@ -15,14 +15,14 @@ dependencies:
   cupertino_icons: ^1.0.6
 
   # State management
-  get_it: ^7.6.4
-  get: ^4.6.6
   provider: ^6.1.1
   # local DB
   hive: ^2.2.3
   intl: ^0.18.1
   flutter_staggered_animations: ^1.1.1
-  sliver_app_bar_builder: ^1.1.0
+  flutter_screenutil: ^5.9.0
+
+ 
 
 
 dev_dependencies:

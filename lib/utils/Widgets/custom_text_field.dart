@@ -12,19 +12,33 @@ class CustomTextFormField extends StatelessWidget {
   final String? hintText;
   final String? titleText;
   final TextStyle? textStyle;
+  final TextStyle? hintStyle;
   final int? maxLength;
   final int? maxLines;
   final Color? fillColor;
+  final Color? enabledBorderColor;
+  final Color? errorBorderColor;
+  final Color? focusedBorderColor;
   final double? height;
+  final double? borderRadius;
   final List<TextInputFormatter>? textInputFormatter;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final bool? autofocus;
   final bool? readonly;
+  final bool? enabled;
 
   const CustomTextFormField({
     super.key,
     this.validator,
+    this.borderRadius,
+    this.autofocus,
+    this.enabled,
+    this.errorBorderColor,
+    this.enabledBorderColor,
+    this.hintStyle,
+    this.focusedBorderColor,
     this.label,
     this.controller,
     this.textInputType,
@@ -49,6 +63,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: autofocus ?? false,
       obscureText: obscureText ?? false,
       controller: controller,
       keyboardType: textInputType,
@@ -61,32 +76,31 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines ?? 1,
       readOnly: readonly ?? false,
       onTap: onTap,
-      style: textStyle ??
-          const TextStyle(
-              fontFamily: "Helvetica Neue",
-              fontWeight: FontWeight.w400,
-              color: moniepointWhite,
-              fontSize: (16)),
+      enabled: enabled ?? true,
+      style: textStyle ?? MoniePointTextStyle.subHeading,
       decoration: InputDecoration(
         hintText: hintText,
         labelText: label,
-        hintStyle: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: (16),
-            color: moniepointWhite.withOpacity(0.4)),
+        hintStyle: hintStyle ?? MoniePointTextStyle.subHeading,
         fillColor: fillColor ?? moniepointTransparent,
         filled: true,
-        enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Color(0xffD9D9D9),
+        disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: enabledBorderColor ?? const Color(0xffD9D9D9),
             ),
-            borderRadius: BorderRadius.circular(15)),
+            borderRadius: BorderRadius.circular(borderRadius ?? 15)),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: enabledBorderColor ?? const Color(0xffD9D9D9),
+            ),
+            borderRadius: BorderRadius.circular(borderRadius ?? 15)),
         errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.red),
-            borderRadius: BorderRadius.circular(15)),
+            borderSide: BorderSide(color: errorBorderColor ?? Colors.red),
+            borderRadius: BorderRadius.circular(borderRadius ?? 15)),
         focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: moniepointPrimaryColor),
-            borderRadius: BorderRadius.circular(15)),
+            borderSide:
+                BorderSide(color: focusedBorderColor ?? moniepointPrimaryColor),
+            borderRadius: BorderRadius.circular(borderRadius ?? 15)),
         labelStyle: const TextStyle(
             color: moniepointPrimaryColor,
             fontSize: 16,
@@ -94,8 +108,9 @@ class CustomTextFormField extends StatelessWidget {
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         prefixIconConstraints: const BoxConstraints(
-          minWidth: 13,
+          minWidth: 16,
         ),
+        isDense: true,
       ),
     );
   }
@@ -115,6 +130,7 @@ class CustomTextFormFieldDropDown extends StatelessWidget {
   final double? height;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final Widget? icon;
 
   const CustomTextFormFieldDropDown({
     super.key,
@@ -130,6 +146,7 @@ class CustomTextFormFieldDropDown extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.onTap,
+    this.icon,
     this.fillColor,
   });
 
@@ -142,11 +159,7 @@ class CustomTextFormFieldDropDown extends StatelessWidget {
         onChanged: onchanged,
         onSaved: onsaved,
         onTap: onTap,
-        icon: SizedBox(
-          width: (24),
-          height: (24),
-          child: Image.asset('down'.mobilepng),
-        ),
+        icon: icon ?? const Icon(Icons.arrow_drop_down, size: 30),
         style: textStyle ??
             const TextStyle(
                 fontFamily: "Helvetica Neue",

@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../import/import.dart';
@@ -18,19 +17,6 @@ formatCurrency(dynamic value) {
 String convertToAgo(DateTime input) {
   Duration diff = DateTime.now().difference(input);
   return '${diff.inDays}';
-}
-
-void showErrorToast({String? message, int duration = 3}) {
-  Get.rawSnackbar(
-    message: message?.capitalizeFirst ?? "An error occured! 🙂",
-    title: 'Oops!',
-    instantInit: true,
-    duration: Duration(seconds: duration),
-    backgroundColor: Colors.red.withOpacity(.8),
-    margin: const EdgeInsets.symmetric(horizontal: 20),
-    snackPosition: SnackPosition.TOP,
-    borderRadius: 8,
-  );
 }
 
 
