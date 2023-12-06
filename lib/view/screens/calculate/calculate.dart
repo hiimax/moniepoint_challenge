@@ -2,6 +2,7 @@
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:moniepoint_challenge/data/provider/test_provider.dart';
+import 'package:moniepoint_challenge/view/screens/calculate/calculate_screen_keys.dart';
 import 'package:moniepoint_challenge/view/screens/calculate/widget/widget.dart';
 
 import '../../../res/import/import.dart';
@@ -84,9 +85,9 @@ class _CalculateScreenState extends State<CalculateScreen>
                       children: [
                         SlideTransition(
                           position: _offsetAnimation,
-                          child: InkWell(
-                            onTap: () => Navigator.pop(context),
-                            child: const Icon(
+                          child: const InkWell(
+                            child: Icon(
+                              key: CalculateScreenKeys.backArrow,
                               Icons.arrow_back_ios,
                               color: moniepointWhite,
                             ),
@@ -95,9 +96,11 @@ class _CalculateScreenState extends State<CalculateScreen>
                         const Spacer(),
                         SlideTransition(
                           position: _yOffsetAnimation,
+                          key: const Key('Calculate'),
                           child: SlideTransition(
                             position: _appBarTitlesetAnimation,
                             child: Text('Calculate',
+                               
                                 style: MoniePointTextStyle.heading2.copyWith(
                                   color: moniepointWhite,
                                 )),
@@ -125,7 +128,7 @@ class _CalculateScreenState extends State<CalculateScreen>
                   children: [
                     Text(
                       'Destination',
-                      // key: HomeScreenKeys.trackingText,
+                      key: CalculateScreenKeys.calculateText,
                       style: MoniePointTextStyle.heading2.copyWith(
                         color: moniepointPrimaryColor,
                         fontWeight: FontWeight.w600,
@@ -139,6 +142,7 @@ class _CalculateScreenState extends State<CalculateScreen>
             Padding(
               padding: REdgeInsets.symmetric(horizontal: 16.0),
               child: Container(
+                key: CalculateScreenKeys.destinationWidget,
                 decoration: BoxDecoration(
                     color: moniepointWhite,
                     borderRadius: BorderRadius.circular(15),
@@ -250,7 +254,7 @@ class _CalculateScreenState extends State<CalculateScreen>
                       children: [
                         Text(
                           'Packaging',
-                          // key: HomeScreenKeys.trackingText,
+                          key: CalculateScreenKeys.packagingText,
                           style: MoniePointTextStyle.heading2.copyWith(
                             color: moniepointPrimaryColor,
                             fontWeight: FontWeight.w600,
@@ -258,7 +262,7 @@ class _CalculateScreenState extends State<CalculateScreen>
                         ),
                         Text(
                           'What are you sending?',
-                          // key: HomeScreenKeys.trackingText,
+                          key: CalculateScreenKeys.packagingSubText,
                           style: MoniePointTextStyle.subHeading.copyWith(
                             color: moniepointGrey,
                             fontWeight: FontWeight.w400,
@@ -275,8 +279,7 @@ class _CalculateScreenState extends State<CalculateScreen>
               padding: REdgeInsets.symmetric(horizontal: 16.0),
               child: CustomTextFormField(
                 hintText: 'Box',
-                // key: HomeScreenKeys.trackingNumber,
-                // controller: _trackingNumberController,
+                key: CalculateScreenKeys.packagingWidget,
                 fillColor: moniepointWhite,
                 focusedBorderColor: moniepointWhite,
                 enabledBorderColor: moniepointWhite,
@@ -331,7 +334,7 @@ class _CalculateScreenState extends State<CalculateScreen>
                       children: [
                         Text(
                           'Categories',
-                          // key: HomeScreenKeys.trackingText,
+                          key: CalculateScreenKeys.categoriesText,
                           style: MoniePointTextStyle.heading2.copyWith(
                             color: moniepointPrimaryColor,
                             fontWeight: FontWeight.w600,
@@ -339,7 +342,7 @@ class _CalculateScreenState extends State<CalculateScreen>
                         ),
                         Text(
                           'What are you sending?',
-                          // key: HomeScreenKeys.trackingText,
+                          key: CalculateScreenKeys.categoriesSubText,
                           style: MoniePointTextStyle.subHeading.copyWith(
                             color: moniepointGrey,
                             fontWeight: FontWeight.w400,
@@ -358,6 +361,7 @@ class _CalculateScreenState extends State<CalculateScreen>
                 builder: (context, test, _) {
                   return Wrap(
                     spacing: 10,
+                    key: CalculateScreenKeys.categoriesWrap,
                     children: List.generate(
                       test.categoryList.length,
                       (index) => InkWell(
@@ -381,6 +385,7 @@ class _CalculateScreenState extends State<CalculateScreen>
               child: Padding(
                 padding: REdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
                 child: CustomButton(
+                  key: CalculateScreenKeys.calcualteButton,
                   title: 'Calculate',
                   buttonColor: moniepointSecondaryColor,
                   onPressed: () {

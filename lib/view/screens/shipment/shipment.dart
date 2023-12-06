@@ -247,7 +247,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
           ),
           const YMargin(5),
           Expanded(
-            child: TabBarView(
+             child: TabBarView(
               controller: _tabController,
               children: [
                 AnimationLimiter(

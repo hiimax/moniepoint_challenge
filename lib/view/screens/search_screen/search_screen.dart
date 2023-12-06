@@ -66,6 +66,7 @@ class _SearchScreenState extends State<SearchScreen>
                         child: SlideTransition(
                           position: _offsetAnimation,
                           child: InkWell(
+                            key: SearchScreenScreenKeys.backButton  ,
                             onTap: () => Navigator.pop(context),
                             child: const Icon(
                               Icons.arrow_back_ios,

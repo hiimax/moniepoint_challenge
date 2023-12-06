@@ -67,13 +67,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       Row(
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const CircleAvatar(),
+                          CircleAvatar(
+                            key: HomeScreenKeys.circleAvatar,
+                            backgroundColor: moniepointWhite,
+                            backgroundImage:
+                                AssetImage('vicky-unsplash'.mobilejpg),
+                          ),
                           const XMargin(8),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Row(
+                                key: HomeScreenKeys.yourLocation,
                                 children: [
                                   Icon(
                                     Icons.send,
@@ -93,6 +99,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 ],
                               ),
                               Row(
+                                key: HomeScreenKeys.location,
                                 children: [
                                   Text(
                                     'Wertheimer Illinois',
@@ -116,6 +123,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           const Spacer(),
                           const IconWithBackgroundColor(
                             backgroundColor: moniepointWhite,
+                            key: HomeScreenKeys.notifications,
                             child: Icon(
                               Icons.notifications,
                               color: moniepointBlack,
@@ -125,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       ),
                       const YMargin(16),
                       InkWell(
+                        key: HomeScreenKeys.searchWidget,
                         onTap: () {
                           Navigator.pushNamed(context, RouteNames.searchScreen);
                         },
@@ -139,6 +148,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(100),
                             child: CustomTextFormField(
+                              key: HomeScreenKeys.searchTextFormField,
                               enabled: false,
                               hintText: 'Enter the receipt number',
                               hintStyle:
@@ -159,6 +169,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 ),
                               ),
                               suffixIcon: const Padding(
+                                key: HomeScreenKeys
+                                    .searchTextFormFieldSuffixIcon,
                                 padding: EdgeInsets.only(right: 8.0),
                                 child: IconWithBackgroundColor(
                                   backgroundColor: moniepointSecondaryColor,
@@ -185,6 +197,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             const YMargin(20),
             SlideTransition(
               position: _offsetAnimation,
+              key: HomeScreenKeys.trackingText,
               child: Column(
                 children: [
                   Padding(
@@ -193,7 +206,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       children: [
                         Text(
                           'Tracking',
-                          key: HomeScreenKeys.trackingText,
                           style: MoniePointTextStyle.heading2.copyWith(
                             color: moniepointPrimaryColor,
                             fontWeight: FontWeight.w600,
@@ -352,6 +364,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             const YMargin(20),
             Padding(
               padding: REdgeInsets.symmetric(horizontal: 16.0),
+              key: HomeScreenKeys.availableVehiclesList,
               child: SizedBox(
                 height: 180,
                 child: AnimationLimiter(
@@ -381,144 +394,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class HorizontalCard extends StatefulWidget {
-  const HorizontalCard({
-    super.key,
-  });
-
-  @override
-  State<HorizontalCard> createState() => _HorizontalCardState();
-}
-
-class _HorizontalCardState extends State<HorizontalCard>
-    with TickerProviderStateMixin {
-  late final AnimationController _controller;
-
-  late final Animation<Offset> _offsetAnimation;
-  late final Animation<Offset> _yOffsetAnimation;
-  late final Animation<Offset> _containerOffsetAnimation;
-  late final Animation<Offset> _textOffsetAnimation;
-
-  @override
-  void initState() {
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 1000),
-      vsync: this,
-    );
-    _offsetAnimation = Tween<Offset>(
-      begin: const Offset(0.2, 0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
-    _yOffsetAnimation = Tween<Offset>(
-      begin: const Offset(0.0, -0.5),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
-    _containerOffsetAnimation = Tween<Offset>(
-      begin: const Offset(0.5, 0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
-    _textOffsetAnimation = Tween<Offset>(
-      begin: const Offset(0.1, 0.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
-    _controller.forward();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 10.0),
-      child: SlideTransition(
-        position: _containerOffsetAnimation,
-        child: Container(
-          height: 120,
-          width: 170,
-          decoration: BoxDecoration(
-            color: moniepointWhite,
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: [
-              BoxShadow(
-                offset: const Offset(0, 3),
-                color: moniepointBlack.withOpacity(0.1),
-                blurRadius: 10,
-                spreadRadius: 0,
-              )
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: Stack(
-              children: [
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: SizedBox(
-                    width: 150.w,
-                    height: 120.h,
-                    child: SlideTransition(
-                      position: _yOffsetAnimation,
-                      child: SlideTransition(
-                        position: _offsetAnimation,
-                        child:
-                            Image.asset('ship'.mobilepng, fit: BoxFit.contain),
-                      ),
-                    ),
-                  ),
-                ),
-                SlideTransition(
-                  position: _textOffsetAnimation,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Ocean fright',
-                          style: MoniePointTextStyle.heading1WithPrimaryColor
-                              .copyWith(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Text(
-                          'International',
-                          style: MoniePointTextStyle.subHeading.copyWith(
-                            color: moniepointGrey,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
         ),
       ),
     );

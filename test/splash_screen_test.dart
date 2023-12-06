@@ -6,6 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:moniepoint_challenge/view/screens/splash_screen/splash_screen.dart';
 import 'package:moniepoint_challenge/view/screens/splash_screen/splash_screen_keys.dart';
@@ -13,7 +14,9 @@ import 'package:moniepoint_challenge/view/screens/splash_screen/splash_screen_ke
 void main() {
   testWidgets('this test is to check if all widgets is available',
       (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(home: SplashScreen()));
+    await tester.pumpWidget(const ScreenUtilInit(
+        designSize: Size(393, 852), child: MaterialApp(home: SplashScreen())));
+    await tester.pump();
 
     expect(find.byKey(SplashScreenKeys.logoKey), findsOneWidget);
     expect(find.byKey(SplashScreenKeys.splashNameKey), findsOneWidget);

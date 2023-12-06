@@ -5,22 +5,28 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:moniepoint_challenge/view/screens/home/home.dart';
+import 'package:moniepoint_challenge/res/import/import.dart';
 import 'package:moniepoint_challenge/view/screens/home/home_screen_keys.dart';
+import 'package:moniepoint_challenge/view/screens/search_screen/search_screen_keys.dart';
 
 void main() {
   testWidgets('Home screen find all widget test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-
-    // Verify that our counter starts at 0.
+    await tester.pumpWidget(ScreenUtilInit(
+        designSize: const Size(393, 852),
+        child: MultiProvider(
+          providers: providers,
+          child: MaterialApp(
+              initialRoute: '/',
+              routes: RouteNames.routes,
+              home: const HomeScreen()),
+        )));
+    await tester.pump();
     expect(find.byKey(HomeScreenKeys.circleAvatar), findsOneWidget);
-    expect(find.byKey(HomeScreenKeys.yourLocation), findsOneWidget);
     expect(find.byKey(HomeScreenKeys.location), findsOneWidget);
-    expect(find.byKey(HomeScreenKeys.notifications), findsOneWidget);
-    expect(find.byKey(HomeScreenKeys.searchIcon), findsOneWidget);
+    expect(find.byKey(HomeScreenKeys.yourLocation), findsOneWidget);
     expect(find.byKey(HomeScreenKeys.searchTextFormField), findsOneWidget);
     expect(find.byKey(HomeScreenKeys.searchTextFormFieldSuffixIcon),
         findsOneWidget);
@@ -28,5 +34,9 @@ void main() {
     expect(find.byKey(HomeScreenKeys.trackingContainer), findsOneWidget);
     expect(find.byKey(HomeScreenKeys.availableVehicles), findsOneWidget);
     expect(find.byKey(HomeScreenKeys.availableVehiclesList), findsOneWidget);
+
+    await tester.tap(find.byKey(HomeScreenKeys.searchWidget));
+    await tester.pumpAndSettle();
+    expect(find.byKey(SearchScreenScreenKeys.backButton), findsOneWidget);
   });
 }

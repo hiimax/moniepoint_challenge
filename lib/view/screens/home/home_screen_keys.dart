@@ -8,8 +8,7 @@ class HomeScreenKeys {
   static const Key searchIcon = Key('search');
   static const Key searchWidget = Key('search');
   static const Key searchTextFormField = Key('searchTextFormField');
-  static const Key searchTextFormFieldSuffixIcon =
-      Key('searchTextFormFieldSuffixIcon');
+  static const Key searchTextFormFieldSuffixIcon = Key('searchTextFormFieldSuffixIcon');
   static const Key trackingText = Key('trackingText');
   static const Key trackingContainer = Key('trackingContainer');
   static const Key availableVehicles = Key('availableVehicles');
