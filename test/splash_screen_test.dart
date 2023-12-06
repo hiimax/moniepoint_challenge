@@ -8,22 +8,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:moniepoint_challenge/view/screens/splash_screen/splash_screen.dart';
+import 'package:moniepoint_challenge/view/screens/splash_screen/splash_screen_keys.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('this test is to check if all widgets is available',
+      (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(home: SplashScreen()));
 
-    // Verify that our counter starts at 0.
-    expect(find.byKey(const Key('1')), findsOneWidget);
-    // expect(find.text('1'), findsNothing);
-
-    // // Tap the '+' icon and trigger a frame.
-    // await tester.tap(find.byIcon(Icons.add));
-    // await tester.pump();
-    //
-    // // Verify that our counter has incremented.
-    // expect(find.text('0'), findsNothing);
-    // expect(find.text('1'), findsOneWidget);
+    expect(find.byKey(SplashScreenKeys.logoKey), findsOneWidget);
+    expect(find.byKey(SplashScreenKeys.splashNameKey), findsOneWidget);
   });
 }

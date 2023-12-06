@@ -28,14 +28,5 @@ void main() {
     expect(find.byKey(HomeScreenKeys.trackingContainer), findsOneWidget);
     expect(find.byKey(HomeScreenKeys.availableVehicles), findsOneWidget);
     expect(find.byKey(HomeScreenKeys.availableVehiclesList), findsOneWidget);
-    // expect(find.text('1'), findsNothing);
-
-    // // Tap the '+' icon and trigger a frame.
-    // await tester.tap(find.byIcon(Icons.add));
-    // await tester.pump();
-    //
-    // // Verify that our counter has incremented.
-    // expect(find.text('0'), findsNothing);
-    // expect(find.text('1'), findsOneWidget);
   });
 }
