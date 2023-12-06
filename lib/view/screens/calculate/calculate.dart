@@ -96,11 +96,10 @@ class _CalculateScreenState extends State<CalculateScreen>
                         const Spacer(),
                         SlideTransition(
                           position: _yOffsetAnimation,
-                          key: const Key('Calculate'),
+                          key: CalculateScreenKeys.calculateText,
                           child: SlideTransition(
                             position: _appBarTitlesetAnimation,
                             child: Text('Calculate',
-                               
                                 style: MoniePointTextStyle.heading2.copyWith(
                                   color: moniepointWhite,
                                 )),
@@ -128,7 +127,7 @@ class _CalculateScreenState extends State<CalculateScreen>
                   children: [
                     Text(
                       'Destination',
-                      key: CalculateScreenKeys.calculateText,
+                      key: CalculateScreenKeys.destinationText,
                       style: MoniePointTextStyle.heading2.copyWith(
                         color: moniepointPrimaryColor,
                         fontWeight: FontWeight.w600,

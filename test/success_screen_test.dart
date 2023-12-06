@@ -8,7 +8,6 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:moniepoint_challenge/res/import/import.dart';
-import 'package:moniepoint_challenge/view/screens/calculate/calculate_screen_keys.dart';
 import 'package:moniepoint_challenge/view/screens/success/success_screen_keys.dart';
 
 void main() {
@@ -22,23 +21,19 @@ void main() {
           child: MaterialApp(
               initialRoute: '/',
               routes: RouteNames.routes,
-              home: const CalculateScreen()),
+              home: const SuccessScreen()),
         )));
     await tester.pump();
-    expect(find.byKey(CalculateScreenKeys.backArrow), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.calculateText), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.destinationText), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.destinationWidget), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.packagingText), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.packagingSubText), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.packagingWidget), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.categoriesText), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.categoriesSubText), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.categoriesWrap), findsOneWidget);
-    expect(find.byKey(CalculateScreenKeys.calcualteButton), findsOneWidget);
-
-    await tester.tap(find.byKey(CalculateScreenKeys.calcualteButton));
-    await tester.pumpAndSettle();
     expect(find.byKey(SuccessScreenKeys.cardboard), findsOneWidget);
+    expect(find.byKey(SuccessScreenKeys.moveMateText), findsOneWidget);
+    expect(find.byKey(SuccessScreenKeys.calculateButton), findsOneWidget);
+    expect(find.byKey(SuccessScreenKeys.descriptionText), findsOneWidget);
+    expect(find.byKey(SuccessScreenKeys.forklift), findsOneWidget);
+    expect(find.byKey(SuccessScreenKeys.totalAmountText), findsOneWidget);
+    expect(find.byKey(SuccessScreenKeys.totalEstimatedText), findsOneWidget);
+
+    // await tester.tap(find.byKey(SuccessScreenKeys.calculateButton));
+    // await tester.pumpAndSettle();
+    // expect(find.byKey(CalculateScreenKeys.calculateText), findsOneWidget);
   });
 }

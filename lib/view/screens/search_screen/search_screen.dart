@@ -66,7 +66,7 @@ class _SearchScreenState extends State<SearchScreen>
                         child: SlideTransition(
                           position: _offsetAnimation,
                           child: InkWell(
-                            key: SearchScreenScreenKeys.backButton  ,
+                            key: SearchScreenScreenKeys.backButton,
                             onTap: () => Navigator.pop(context),
                             child: const Icon(
                               Icons.arrow_back_ios,
@@ -88,7 +88,9 @@ class _SearchScreenState extends State<SearchScreen>
                               Material(child: toHeroContext.widget),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(100),
+                            key: SearchScreenScreenKeys.searchWidget,
                             child: CustomTextFormField(
+                              key: SearchScreenScreenKeys.searchTextFormField,
                               enabled: true,
                               autofocus: true,
                               hintText: 'Enter the receipt number',
@@ -101,6 +103,7 @@ class _SearchScreenState extends State<SearchScreen>
                               borderRadius: 100,
                               prefixIcon: const Padding(
                                 padding: EdgeInsets.only(left: 8.0),
+                                key: SearchScreenScreenKeys.searchIcon,
                                 child: CircleAvatar(
                                   backgroundColor: Colors.transparent,
                                   child: Icon(
@@ -111,6 +114,8 @@ class _SearchScreenState extends State<SearchScreen>
                               ),
                               suffixIcon: const Padding(
                                 padding: EdgeInsets.only(right: 8.0),
+                                key: SearchScreenScreenKeys
+                                    .searchTextFormFieldSuffixIcon,
                                 child: IconWithBackgroundColor(
                                   backgroundColor: moniepointSecondaryColor,
                                   child: Icon(
@@ -119,9 +124,8 @@ class _SearchScreenState extends State<SearchScreen>
                                   ),
                                 ),
                               ),
-                              
                               onchanged: (val) {
-                                test.searchThroughList(val ??'#Ne');
+                                test.searchThroughList(val ?? '#Ne');
                               },
                             ),
                           ),
