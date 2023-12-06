@@ -130,6 +130,7 @@ class CustomTextFormFieldDropDown extends StatelessWidget {
   final double? height;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final Widget? icon;
 
   const CustomTextFormFieldDropDown({
     super.key,
@@ -145,6 +146,7 @@ class CustomTextFormFieldDropDown extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.onTap,
+    this.icon,
     this.fillColor,
   });
 
@@ -157,11 +159,7 @@ class CustomTextFormFieldDropDown extends StatelessWidget {
         onChanged: onchanged,
         onSaved: onsaved,
         onTap: onTap,
-        icon: SizedBox(
-          width: (24),
-          height: (24),
-          child: Image.asset('down'.mobilepng),
-        ),
+        icon: icon ?? Icon(Icons.arrow_drop_down, size: 30),
         style: textStyle ??
             const TextStyle(
                 fontFamily: "Helvetica Neue",
