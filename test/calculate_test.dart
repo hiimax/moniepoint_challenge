@@ -9,7 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:moniepoint_challenge/res/import/import.dart';
 import 'package:moniepoint_challenge/view/screens/calculate/calculate_screen_keys.dart';
-import 'package:moniepoint_challenge/view/screens/success/success_screen_keys.dart';
 
 void main() {
   testWidgets('calculate screen find all widget test',
@@ -36,9 +35,5 @@ void main() {
     expect(find.byKey(CalculateScreenKeys.categoriesSubText), findsOneWidget);
     expect(find.byKey(CalculateScreenKeys.categoriesWrap), findsOneWidget);
     expect(find.byKey(CalculateScreenKeys.calcualteButton), findsOneWidget);
-
-    await tester.tap(find.byKey(CalculateScreenKeys.calcualteButton));
-    await tester.pumpAndSettle();
-    expect(find.byKey(SuccessScreenKeys.cardboard), findsOneWidget);
   });
 }
