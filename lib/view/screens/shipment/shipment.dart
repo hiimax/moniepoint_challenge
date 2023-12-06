@@ -1,4 +1,5 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:moniepoint_challenge/view/screens/shipment/shipment_screen_keys.dart';
 import 'package:moniepoint_challenge/view/screens/shipment/widget/cancelled.dart';
 import 'package:moniepoint_challenge/view/screens/shipment/widget/completed.dart';
 import 'package:moniepoint_challenge/view/screens/shipment/widget/in_progress.dart';
@@ -51,13 +52,6 @@ class _ShipmentScreenState extends State<ShipmentScreen>
       parent: _controller,
       curve: Curves.easeInOut,
     ));
-    // _voffsetAnimation = Tween<Offset>(
-    //   begin: const Offset(0.0, 0.2),
-    //   end: const Offset(0.0, 0.0),
-    // ).animate(CurvedAnimation(
-    //   parent: _controller,
-    //   curve: Curves.easeInOut,
-    // ));
     _controller.forward();
     super.initState();
   }
@@ -84,6 +78,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                     children: [
                       Flexible(
                         child: SlideTransition(
+                          key: ShipmentsScreenKeys.backArrow,
                           position: _offsetAnimation,
                           child: const Icon(
                             Icons.arrow_back_ios,
@@ -94,6 +89,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                       const Spacer(),
                       SlideTransition(
                         position: _yOffsetAnimation,
+                        key: ShipmentsScreenKeys.shipmentHistory,
                         child: SlideTransition(
                           position: _appBarTitlesetAnimation,
                           child: Text('Shipment history',
@@ -112,6 +108,7 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                       position: _appBarTitlesetAnimation,
                       child: TabBar(
                           controller: _tabController,
+                          key: ShipmentsScreenKeys.tabBar,
                           indicatorColor: moniepointSecondaryColor,
                           isScrollable: true,
                           tabs: [
@@ -229,13 +226,13 @@ class _ShipmentScreenState extends State<ShipmentScreen>
           ),
           SlideTransition(
             position: _offsetAnimation,
+            key: ShipmentsScreenKeys.shipments,
             child: Padding(
               padding: REdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
                 children: [
                   Text(
                     'Shipments',
-                    // key: HomeScreenKeys.trackingText,
                     style: MoniePointTextStyle.heading2.copyWith(
                       color: moniepointPrimaryColor,
                       fontWeight: FontWeight.w600,
@@ -247,10 +244,12 @@ class _ShipmentScreenState extends State<ShipmentScreen>
           ),
           const YMargin(5),
           Expanded(
-             child: TabBarView(
+            child: TabBarView(
               controller: _tabController,
+              key: ShipmentsScreenKeys.tabBarView,
               children: [
                 AnimationLimiter(
+                  key: ShipmentsScreenKeys.allTabBarView,
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
                     cacheExtent: 1000,
@@ -281,10 +280,22 @@ class _ShipmentScreenState extends State<ShipmentScreen>
                     },
                   ),
                 ),
-                const Completed(),
-                const InProgress(),
-                const Pending(),
-                const Cancelled()
+                const SizedBox(
+                  key: ShipmentsScreenKeys.completedTabBarView,
+                  child: Completed(),
+                ),
+                const SizedBox(
+                  key: ShipmentsScreenKeys.inProgressTabBarView,
+                  child: InProgress(),
+                ),
+                const SizedBox(
+                  key: ShipmentsScreenKeys.pendingTabBarView,
+                  child: Pending(),
+                ),
+                const SizedBox(
+                  key: ShipmentsScreenKeys.cancelledTabBarView,
+                  child: Cancelled(),
+                )
               ],
             ),
           ),

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:moniepoint_challenge/view/screens/success/success_screen_keys.dart';
 
 import '../../../res/import/import.dart';
 
@@ -92,6 +93,7 @@ class _SuccessScreenState extends State<SuccessScreen>
                 children: [
                   SlideTransition(
                     position: _offsetAnimation,
+                    key: SuccessScreenKeys.moveMateText,
                     child: Padding(
                       padding: REdgeInsets.fromLTRB(16, 0, 16, 0),
                       child: Text(
@@ -105,6 +107,7 @@ class _SuccessScreenState extends State<SuccessScreen>
                   ),
                   SlideTransition(
                     position: _offsetAnimation,
+                    key: SuccessScreenKeys.forklift,
                     child: Padding(
                         padding: REdgeInsets.fromLTRB(16, 0, 16, 0),
                         child: SizedBox(
@@ -121,6 +124,7 @@ class _SuccessScreenState extends State<SuccessScreen>
               const YMargin(10),
               SlideTransition(
                 position: _offsetAnimation,
+                key: SuccessScreenKeys.cardboard,
                 child: Padding(
                   padding: REdgeInsets.fromLTRB(16, 0, 16, 0),
                   child: AnimatedContainer(
@@ -137,6 +141,7 @@ class _SuccessScreenState extends State<SuccessScreen>
               const YMargin(10),
               SlideTransition(
                 position: _offsetAnimation,
+                key: SuccessScreenKeys.totalEstimatedText,
                 child: Padding(
                   padding: REdgeInsets.fromLTRB(16, 0, 16, 0),
                   child: Text(
@@ -151,6 +156,7 @@ class _SuccessScreenState extends State<SuccessScreen>
               const YMargin(10),
               Padding(
                 padding: REdgeInsets.fromLTRB(16, 0, 16, 0),
+                key: SuccessScreenKeys.totalAmountText,
                 child: Text(
                   '\$${_amountAnimation.value.toStringAsFixed(0)} USD',
                   style: MoniePointTextStyle.subHeading.copyWith(
@@ -162,6 +168,7 @@ class _SuccessScreenState extends State<SuccessScreen>
               const YMargin(10),
               Padding(
                 padding: REdgeInsets.fromLTRB(16, 0, 16, 0),
+                key: SuccessScreenKeys.descriptionText,
                 child: Text(
                   'this amount is estimated this will vary \n if you chnge your location or weight',
                   style: MoniePointTextStyle.subHeading.copyWith(
@@ -174,6 +181,7 @@ class _SuccessScreenState extends State<SuccessScreen>
               Padding(
                 padding: REdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
                 child: CustomButton(
+                  key: SuccessScreenKeys.calculateButton,
                   title: 'Calculate',
                   buttonColor: moniepointSecondaryColor,
                   onPressed: () {
